@@ -1,0 +1,31 @@
+import "./globals.css"; // Ensure Tailwind styles are applied
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body className="flex h-screen">
+        {/* Sidebar */}
+        <aside className="w-64 bg-gray-800 text-white p-4">
+          <h2 className="text-2xl font-bold mb-6">AOO Tracker</h2>
+          <nav>
+            <ul>
+              <li>
+                <a
+                  href="/events"
+                  className="flex items-center p-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded"
+                >
+                  <span className="material-icons mr-2">event</span>
+                  Events
+                </a>
+              </li>
+              {/* Add more navigation links as needed */}
+            </ul>
+          </nav>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 bg-gray-100 p-8 overflow-y-auto">{children}</main>
+      </body>
+    </html>
+  );
+}

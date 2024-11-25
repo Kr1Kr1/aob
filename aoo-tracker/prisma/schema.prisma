@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./sauron.db"
+}
+
+model Events {
+  id         Int      @id @default(autoincrement())
+  event      String
+  details    String?
+  fromCol    String
+  withWhom   String?
+  date       String
+  calculatedDate DateTime?
+  territory  String   @default("Unknown Territory")
+  source     String   @default("extension") 
+}
+
+model Factions {
+  id   Int    @id @default(autoincrement())
+  name String @unique // Ensure each faction name is unique
+
+  // A faction can have many characters
+  characters Characters[]
+}
+
+model Characters {
+  id          Int      @id @default(autoincrement())
+  targetId    Int      @unique // Corresponds to `targetId` in the game
+  name        String
+  rank        String?
+  popularity  String?
+  role        String?
+  portraitUrl String?
+  description String?
+
+  // Foreign key to Factions
+  factionId Int?      // Nullable foreign key
+  faction   Factions? @relation(fields: [factionId], references: [id])
+}
