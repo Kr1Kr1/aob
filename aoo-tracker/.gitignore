@@ -43,3 +43,6 @@ next-env.d.ts
 prisma/*.db
 prisma/*.db-journal
 prisma/*_backup_*.db
+
+# Logs
+logs/*.log
