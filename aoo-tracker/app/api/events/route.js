@@ -5,13 +5,40 @@ const prisma = new PrismaClient();
 
 export async function GET(req) {
   try {
-    const events = await prisma.events.findMany();
-    return new Response(JSON.stringify(events), {
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
+    // Extract query parameters for offset and limit
+    const url = new URL(req.url);
+    const offset = parseInt(url.searchParams.get("offset") || "0", 10);
+    const limit = parseInt(url.searchParams.get("limit") || "10", 10);
+
+    console.log(`[API] Fetching events with offset=${offset}, limit=${limit}`);
+
+    // Fetch events with pagination
+    const events = await prisma.events.findMany({
+      skip: offset,
+      take: limit,
+      orderBy: {
+        calculatedDate: "desc", // Ensure consistent ordering
       },
     });
+
+    // Count total events for pagination metadata
+    const totalEvents = await prisma.events.count();
+
+    // Return the events and metadata
+    return new Response(
+      JSON.stringify({
+        events,
+        total: totalEvents,
+        offset,
+        limit,
+      }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
   } catch (error) {
     console.error("[API] Error fetching events:", error);
     return new Response(JSON.stringify({ error: "Internal Server Error" }), {

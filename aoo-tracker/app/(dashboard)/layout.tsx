@@ -1,43 +1,32 @@
-import Link from 'next/link';
+import Link from "next/link";
 import {
-    Flag,
+  Flag,
   Home,
-  LineChart,
-  Package,
-  Package2,
   PanelLeft,
   Settings,
-  ShoppingCart,
-  Users2
-} from 'lucide-react';
-
+  Users2,
+  BookOpen,
+  Shield,
+  Map as MapIcon,
+} from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator
-} from '@/components/ui/breadcrumb';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger
-} from '@/components/ui/tooltip';
-import { User } from './user';
-import { AOOLogo } from '@/components/icons';
-import Providers from './providers';
-import { NavItem } from './nav-item';
-import { SearchInput } from './search';
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { User } from "./user";
+import { AOOLogo } from "@/components/icons";
+import Providers from "./providers";
+import { NavItem } from "./nav-item";
+import { SearchInput } from "./search";
 import { useRouter } from "next/navigation";
 
-export default function DashboardLayout({
-  children
-}: {
-  children: React.ReactNode;
-}) {
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <Providers>
       <main className="flex min-h-screen w-full flex-col bg-muted/40">
@@ -70,7 +59,7 @@ function DesktopNav() {
           <span className="sr-only">Acme Inc</span>
         </Link>
 
-        <NavItem href="#" label="Dashboard">
+        <NavItem href="/" label="Dashboard">
           <Home className="h-5 w-5" />
         </NavItem>
 
@@ -80,6 +69,20 @@ function DesktopNav() {
 
         <NavItem href="/characters" label="Characters">
           <Users2 className="h-5 w-5" />
+        </NavItem>
+
+        {/* Forum Section */}
+        <NavItem href="/forum/public" label="Public Forum">
+          <BookOpen className="h-5 w-5" />
+        </NavItem>
+
+        <NavItem href="/forum/private" label="Private Forum">
+          <Shield className="h-5 w-5" />
+        </NavItem>
+
+        {/* Map Section */}
+        <NavItem href="/map" label="Map">
+          <MapIcon className="h-5 w-5" />
         </NavItem>
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
@@ -101,77 +104,98 @@ function DesktopNav() {
 }
 
 function MobileNav() {
-    return (
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button size="icon" variant="outline" className="sm:hidden">
-            <PanelLeft className="h-5 w-5" />
-            <span className="sr-only">Toggle Menu</span>
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="left" className="sm:max-w-xs">
-          <nav className="grid gap-6 text-lg font-medium">
-            {/* AOO Logo */}
-            <Link
-              href="https://age-of-olympia.net/"
-              className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground"
-            >
-              <AOOLogo className="h-5 w-5 transition-all group-hover:scale-110" />
-              <span className="sr-only">AOO</span>
-            </Link>
-  
-            {/* Dashboard */}
-            <Link
-              href="#"
-              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-            >
-              <Home className="h-5 w-5" />
-              Dashboard
-            </Link>
-  
-            {/* Events */}
-            <Link
-              href="/events"
-              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-            >
-              <Flag className="h-5 w-5" />
-              Events
-            </Link>
-  
-            {/* Characters */}
-            <Link
-              href="/characters"
-              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-            >
-              <Users2 className="h-5 w-5" />
-              Characters
-            </Link>
-  
-            {/* Settings */}
-            <Link
-              href="#"
-              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-            >
-              <Settings className="h-5 w-5" />
-              Settings
-            </Link>
-          </nav>
-        </SheetContent>
-      </Sheet>
-    );
+  return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button size="icon" variant="outline" className="sm:hidden">
+          <PanelLeft className="h-5 w-5" />
+          <span className="sr-only">Toggle Menu</span>
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="left" className="sm:max-w-xs">
+        <nav className="grid gap-6 text-lg font-medium">
+          <Link
+            href="https://age-of-olympia.net/"
+            className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground"
+          >
+            <AOOLogo className="h-5 w-5 transition-all group-hover:scale-110" />
+            <span className="sr-only">AOO</span>
+          </Link>
+
+          <Link
+            href="/"
+            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+          >
+            <Home className="h-5 w-5" />
+            Dashboard
+          </Link>
+
+          <Link
+            href="/events"
+            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+          >
+            <Flag className="h-5 w-5" />
+            Events
+          </Link>
+
+          <Link
+            href="/characters"
+            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+          >
+            <Users2 className="h-5 w-5" />
+            Characters
+          </Link>
+
+          {/* Forum Section */}
+          <Link
+            href="/forum/public"
+            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+          >
+            <BookOpen className="h-5 w-5" />
+            Public Forum
+          </Link>
+
+          <Link
+            href="/forum/private"
+            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+          >
+            <Shield className="h-5 w-5" />
+            Private Forum
+          </Link>
+
+          {/* Map Section */}
+          <Link
+            href="/map"
+            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+          >
+            <MapIcon className="h-5 w-5" />
+            Map
+          </Link>
+
+          <Link
+            href="#"
+            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+          >
+            <Settings className="h-5 w-5" />
+            Settings
+          </Link>
+        </nav>
+      </SheetContent>
+    </Sheet>
+  );
 }
 
 function DashboardBreadcrumb() {
-    return (
-      <Breadcrumb className="hidden md:flex">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href="#">Dashboard</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-        </BreadcrumbList>
-      </Breadcrumb>
-    );
-  }
+  return (
+    <Breadcrumb className="hidden md:flex">
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink asChild>
+            <Link href="#">Dashboard</Link>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+      </BreadcrumbList>
+    </Breadcrumb>
+  );
+}
