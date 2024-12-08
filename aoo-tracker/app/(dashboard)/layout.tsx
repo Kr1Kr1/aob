@@ -7,7 +7,8 @@ import {
   Users2,
   BookOpen,
   Shield,
-  Map as MapIcon,
+  Map as MapIcon,  
+  MessageCircle,
 } from "lucide-react";
 import {
   Breadcrumb,
@@ -84,6 +85,12 @@ function DesktopNav() {
         <NavItem href="/map" label="Map">
           <MapIcon className="h-5 w-5" />
         </NavItem>
+
+        {/* IA Section */}
+        <NavItem href="/chat" label="IAOO">
+          <MessageCircle className="h-5 w-5" />
+        </NavItem>
+
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
         <Tooltip>

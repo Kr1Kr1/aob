@@ -78,6 +78,16 @@ model Characters {
 
   attributes CharacterAttributes?
 
+  // Foreign key to IAUser
+  userId      String?       // Foreign key linking to IAUser
+  user        IAUser?       @relation("owned_characters", fields: [userId], references: [id])
+
+  // Reciprocal field for activeCharacter relationship
+  activeForUser IAUser? @relation("active_character")
+
+  // Relationships
+  chats IAChat[] // A character can have multiple chats
+
   createdAt   DateTime @default(now())
   @@index([targetId])
 }
@@ -179,4 +189,80 @@ model Messages {
   character   Characters  @relation(fields: [characterId], references: [id])
   topicId     Int         // Foreign key to Topics
   topic       Topics      @relation(fields: [topicId], references: [id])
+}
+
+// IA Section
+
+model IAUser {
+  id         String       @id @default(uuid()) // UUID for unique user IDs
+  username   String       @unique
+  createdAt  DateTime     @default(now())      // Timestamp for user creation
+
+  // Relationships
+  activeCharacterId Int? @unique // The currently active character
+  activeCharacter Characters? @relation("active_character", fields: [activeCharacterId], references: [id])
+  characters Characters[] @relation("owned_characters") // One user can manage multiple characters
+  documents IADocument[]
+  suggestions IASuggestion[]
+
+  @@index([activeCharacterId])
+}
+
+model IAChat {
+  id          String      @id @default(uuid()) // UUID for unique chat IDs
+  characterId Int         // Foreign key linking to Characters
+  character   Characters  @relation(fields: [characterId], references: [id]) // Relationship with Characters
+  chatType    String      // Type of chat: "gpt" or "rag" for comparison
+  createdAt   DateTime    @default(now())      // Timestamp for chat creation
+
+  // Relationships
+  messages    IAMessage[]   // Messages in the chat
+  votes    IAVote[]
+}
+
+model IAMessage {
+  id         String    @id @default(uuid()) // UUID for unique message IDs
+  chatId     String    // Foreign key to Chat
+  chat       IAChat      @relation(fields: [chatId], references: [id]) // Relationship with Chat
+  role       String    // Role of the sender (e.g., "user", "assistant")
+  content    String    // JSON content of the message (simplified for SQLite)
+  createdAt  DateTime  @default(now()) // Timestamp for message creation
+
+  // Relationships
+  votes      IAVote[]    // Votes related to this message
+}
+
+model IAVote {
+  chatId     String    // Foreign key to Chat
+  chat       IAChat      @relation(fields: [chatId], references: [id]) // Relationship with Chat
+  messageId  String    // Foreign key to Message
+  message    IAMessage   @relation(fields: [messageId], references: [id]) // Relationship with Message
+  isUpvoted  Boolean   // Boolean to track upvotes/downvotes
+
+  @@id([chatId, messageId]) // Composite primary key for votes
+}
+
+model IADocument {
+  id         String    @id @default(uuid()) // UUID for unique document IDs
+  createdAt  DateTime  @default(now()) // Timestamp for document creation
+  title      String    // Title of the document
+  content    String?   // Optional content of the document
+  userId     String    // Foreign key to IAUser
+  user       IAUser      @relation(fields: [userId], references: [id]) // Relationship with User
+
+  // Relationships
+  suggestions IASuggestion[] // Suggestions related to the document
+}
+
+model IASuggestion {
+  id              String    @id @default(uuid()) // UUID for unique suggestion IDs
+  documentId      String    // Foreign key to Document
+  document        IADocument  @relation(fields: [documentId], references: [id]) // Relationship with IADocument
+  originalText    String    // Original text in the document
+  suggestedText   String    // Suggested replacement text
+  description     String?   // Optional description of the suggestion
+  isResolved      Boolean   @default(false) // Whether the suggestion is resolved
+  userId          String    // Foreign key to User
+  user            IAUser      @relation(fields: [userId], references: [id]) // Relationship with IAUser
+  createdAt       DateTime  @default(now()) // Timestamp for suggestion creation
 }
