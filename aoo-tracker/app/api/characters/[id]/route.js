@@ -85,6 +85,117 @@ export async function GET(req, context) {
   }
 }
 
+export async function PATCH(req, context) {
+  try {
+    logger.info("[API] Starting to update character details...");
+
+    // Await `params` from `context` for dynamic routes
+    const params = await context.params;
+    const { id: targetId } = params;
+
+    if (!targetId) {
+      logger.warn("[API] Missing targetId in the request");
+      return new Response(JSON.stringify({ error: "Missing targetId in the request" }), {
+        status: 400,
+      });
+    }
+
+    const parsedTargetId = parseInt(targetId, 10);
+    if (isNaN(parsedTargetId)) {
+      logger.warn("[API] Invalid targetId format");
+      return new Response(JSON.stringify({ error: "Invalid targetId format" }), {
+        status: 400,
+        headers: corsHeaders(),
+      });
+    }
+
+    // Log parsedTargetId
+    logger.debug(`[API] Parsed targetId: ${parsedTargetId}`);
+
+    // Parse the body for updates
+    const updates = await req.json();
+    const { rank, popularity, role } = updates;
+
+    if (!rank && !popularity && !role) {
+      logger.warn("[API] No valid attributes to update");
+      return new Response(JSON.stringify({ error: "No valid attributes to update" }), {
+        status: 400,
+        headers: corsHeaders(),
+      });
+    }
+
+    // Fetch existing character
+    const character = await prisma.characters.findUnique({
+      where: { targetId: parsedTargetId },
+    });
+
+    if (!character) {
+      logger.warn(`[API] Character with targetId ${parsedTargetId} not found`);
+      return new Response(JSON.stringify({ error: "Character not found" }), {
+        status: 404,
+        headers: corsHeaders(),
+      });
+    }
+
+    // Prepare change logs
+    const changeLogs = [];
+    if (rank && rank !== character.rank) {
+      changeLogs.push({
+        characterId: character.id,
+        attribute: "rank",
+        oldValue: character.rank,
+        newValue: rank,
+      });
+    }
+    if (popularity && popularity !== character.popularity) {
+      changeLogs.push({
+        characterId: character.id,
+        attribute: "popularity",
+        oldValue: character.popularity,
+        newValue: popularity,
+      });
+    }
+    if (role && role !== character.role) {
+      changeLogs.push({
+        characterId: character.id,
+        attribute: "role",
+        oldValue: character.role,
+        newValue: role,
+      });
+    }
+
+    // Log the changes for debugging
+    logger.debug(`[API] Change logs prepared: ${JSON.stringify(changeLogs, null, 2)}`);
+
+    // Update the character
+    const updatedCharacter = await prisma.characters.update({
+      where: { targetId: parsedTargetId },
+      data: { rank, popularity, role },
+    });
+
+    // Save change logs
+    if (changeLogs.length > 0) {
+      await prisma.characterLog.createMany({
+        data: changeLogs.map((log) => ({
+          ...log,
+          changedAt: new Date(),
+        })),
+      });
+    }
+
+    logger.info(`[API] Successfully updated character: ${updatedCharacter.name}`);
+    return new Response(JSON.stringify(updatedCharacter), {
+      headers: corsHeaders(),
+    });
+  } catch (error) {
+    logger.error(`[API] Error updating character: ${error.message}`, { stack: error.stack });
+    return new Response(JSON.stringify({ error: "Internal Server Error" }), {
+      status: 500,
+      headers: corsHeaders(),
+    });
+  }
+}
+
 // OPTIONS: Handle CORS preflight
 export async function OPTIONS(req) {
   return new Response(null, {
@@ -93,11 +204,10 @@ export async function OPTIONS(req) {
   });
 }
 
-// CORS headers
 function corsHeaders() {
   return {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, PATCH, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Allow-Credentials": "true",
   };

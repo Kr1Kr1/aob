@@ -51,13 +51,17 @@ export async function POST(req, context) {
         orderBy: { modifiedAt: "desc" },
       });
   
-      // Compare with the new story content (even if empty)
       if (mostRecentStory && mostRecentStory.story.trim() === story) {
         logger.info(`[API] Duplicate story content detected for character with targetId ${parsedTargetId}`);
-        return new Response(JSON.stringify({ error: "Duplicate story content detected" }), {
-          status: 409, // Conflict
-          headers: corsHeaders(),
-        });
+        return new Response(
+          JSON.stringify({
+            message: "Content is identical to the most recent story. No update performed.",
+          }),
+          {
+            status: 200, // Success
+            headers: corsHeaders(),
+          }
+        );
       }
   
       // Create a new CharacterHistory entry
@@ -118,6 +122,9 @@ export async function GET(req, context) {
       orderBy: { modifiedAt: "desc" },
     });
 
+    logger.info(`[API] Retrieved ${history.length} history entries for character with id ${character.id}`);
+    logger.info(`[API] Full history entries: ${JSON.stringify(history, null, 2)}`);
+
     return new Response(JSON.stringify(history), {
       headers: { "Content-Type": "application/json" },
     });
@@ -137,11 +144,10 @@ export async function OPTIONS(req) {
   });
 }
 
-// CORS headers
 function corsHeaders() {
   return {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, PATCH, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Allow-Credentials": "true",
   };

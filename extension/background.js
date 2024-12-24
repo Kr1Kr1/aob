@@ -117,6 +117,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           if (response?.logs) {
             console.log("[background.js] Logs received from content script:", response.logs);
 
+            // Ensure the playerId is available
+            if (!loginState.playerId) {
+              console.error("[background.js] Player ID not found in login state.");
+              return;
+            }
+            const playerId = loginState.playerId;
+
             response.logs.forEach(async (log) => {
               const { event, details, from, withWhom, date, territory, source } = log;
 
@@ -133,10 +140,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                     event,
                     details,
                     fromCol: from,
-                    withWhom,
+                    withWhom, 
                     date,
                     territory,
                     source,
+                    playerId,
                   }),
                 });
 
@@ -176,7 +184,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
             response.characters.forEach(async (character) => {
               try {
-                const { mdj, story, ...characterData } = character;
+                const { mdj, story, equipment, ...characterData } = character;
 
                 const existingCharacterRes = await fetch(`http://localhost:3000/api/characters/${characterData.targetId}`);
                 let existingCharacter = null;
@@ -191,6 +199,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 const method = existingCharacter ? "PATCH" : "POST";
                 const endpoint = `http://localhost:3000/api/characters${existingCharacter ? `/${characterData.targetId}` : ""}`;
 
+                console.log(`[background.js] Endpoint & method:`, endpoint, method);
                 const res = await fetch(endpoint, {
                   method,
                   headers: { "Content-Type": "application/json" },
@@ -239,7 +248,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                   }
                 }
 
-                if (equipment !== null) {
+                if (equipment !== undefined && equipment !== null) {
                   try {
                     const equipmentRes = await fetch(`http://localhost:3000/api/characters/${characterData.targetId}/equipment`, {
                       method: "POST",
@@ -255,6 +264,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                   } catch (error) {
                     console.error(`[background.js] Error sending equipment for character ${characterData.targetId}:`, error);
                   }
+                } else {
+                  console.log(`[background.js] Equipment is not defined for character ${characterData.targetId}. Skipping.`);
                 }
 
               } catch (error) {
