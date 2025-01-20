@@ -69,7 +69,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             };
 
             try {
-              const apiResponse = await fetch(`http://localhost:3000/api/characters/${characterId}/attributes`, {
+              const apiResponse = await fetch(`http://localhost:3001/api/characters/${characterId}/attributes`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(mappedAttributes),
@@ -133,7 +133,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
               }
 
               try {
-                const res = await fetch("http://localhost:3000/api/events", {
+                const res = await fetch("http://localhost:3001/api/events", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({
@@ -186,7 +186,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
               try {
                 const { mdj, story, equipment, ...characterData } = character;
 
-                const existingCharacterRes = await fetch(`http://localhost:3000/api/characters/${characterData.targetId}`);
+                const existingCharacterRes = await fetch(`http://localhost:3001/api/characters/${characterData.targetId}`);
                 let existingCharacter = null;
 
                 if (existingCharacterRes.ok) {
@@ -197,7 +197,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 }
 
                 const method = existingCharacter ? "PATCH" : "POST";
-                const endpoint = `http://localhost:3000/api/characters${existingCharacter ? `/${characterData.targetId}` : ""}`;
+                const endpoint = `http://localhost:3001/api/characters${existingCharacter ? `/${characterData.targetId}` : ""}`;
 
                 console.log(`[background.js] Endpoint & method:`, endpoint, method);
                 const res = await fetch(endpoint, {
@@ -214,7 +214,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
                 if (mdj !== null) {
                   try {
-                    const mdjRes = await fetch(`http://localhost:3000/api/characters/${characterData.targetId}/mdj`, {
+                    const mdjRes = await fetch(`http://localhost:3001/api/characters/${characterData.targetId}/mdj`, {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ mdj }),
@@ -232,7 +232,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
                 if (story !== null) {
                   try {
-                    const historyRes = await fetch(`http://localhost:3000/api/characters/${characterData.targetId}/history`, {
+                    const historyRes = await fetch(`http://localhost:3001/api/characters/${characterData.targetId}/history`, {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ story }),
@@ -250,7 +250,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
                 if (equipment !== undefined && equipment !== null) {
                   try {
-                    const equipmentRes = await fetch(`http://localhost:3000/api/characters/${characterData.targetId}/equipment`, {
+                    const equipmentRes = await fetch(`http://localhost:3001/api/characters/${characterData.targetId}/equipment`, {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ equipment }),
@@ -336,7 +336,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 console.log("[background.js] Sending forum data to API:", payload);
     
                 // POST forum data to the API
-                const apiResponse = await fetch("http://localhost:3000/api/forums", {
+                const apiResponse = await fetch("http://localhost:3001/api/forums", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify(payload),
@@ -420,7 +420,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 console.log("[background.js] Sending RP forum data to API:", payload);
     
                 // POST forum data to the API
-                const apiResponse = await fetch("http://localhost:3000/api/forums", {
+                const apiResponse = await fetch("http://localhost:3001/api/forums", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify(payload),

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)https://age-of-olympia.net/ -->
+<html lang="fr" coupert-item="9AF8D9A4E502F3784AD24272D81F0381"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  <meta name="viewport" content="width=device-width, initial-scale=1"> <meta name="title" content="Age Of Olympia"> <meta name="description" content="Jeu de rôle par navigateur au tour par tour, rétro-clone de Legends Of Olympia."> <meta name="keywords" content="JDR,jeu en ligne,JDR en ligne,jeu de rôle,jeu de role,en ligne,Legends of Olympia,Age of Olympia,LoO,AoO"> <meta name="robots" content="index, follow"> <meta name="language" content="French"> <title>Age of Olympia - Index</title> <link rel="icon" type="image/x-icon" href="https://age-of-olympia.net/img/ui/favicons/favicon.png"> <script src="./board_files/jquery.js"></script> <script src="./board_files/main.js"></script> <script src="./board_files/console.js"></script> <link href="./board_files/main.min.css" rel="stylesheet"> <link rel="stylesheet" href="./board_files/rpg-awesome.min.css"> <style data-styled="" data-styled-version="4.4.1"></style><style>@import url(https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap);</style><style>/* primary */
+.ld-primaryLightTheme {
+    color: white !important;
+    background-color: #5964ff;
+    border: 1px solid #5964ff; 
+}
+  
+.ld-primaryLightTheme:hover {
+    background-color: #7a89fc;
+    border: 1px solid #7a89fc;
+}
+  
+.ld-primaryLightTheme:active {
+    background-color: #9fabff;
+    border: 1px solid #9fabff;
+}
+
+.ld-primaryDarkTheme {
+    color: white !important;
+    background-color: #373945;
+    border: 1px solid #373945;
+}
+  
+.ld-primaryDarkTheme:hover {
+    background-color: #373945;
+    border: 1px solid #5964ff;
+}
+  
+.ld-primaryDarkTheme:active {
+    background-color: #4D505E;
+    border: 1px solid #5964ff;
+}
+
+/* secondary */  
+.ld-secondaryLightTheme {
+    color: #5964ff !important;
+    background-color: white;
+    border: 1px solid white;
+}
+
+.ld-secondaryLightTheme:hover { border: 1px solid #7a89fc; }
+
+.ld-secondaryLightTheme:active {
+    background-color: #eef3ff;
+    border: 1px solid #5964ff;
+}
+
+.ld-secondaryDarkTheme {
+    color: #E8E8E8 !important;
+    background-color: #373945;
+    border: 1px solid #373945;
+}
+
+.ld-secondaryDarkTheme:hover { border: 1px solid #7a89fc; }
+
+.ld-secondaryDarkTheme:active {
+    background-color: #55596B;
+    border: 1px solid #5964ff;
+}
+
+/* tertiary */ 
+.ld-tertiaryLightTheme {
+    color: #5964ff !important;
+    background-color: #cad5ff;
+    border: 1px solid #cad5ff;
+}
+  
+.ld-tertiaryLightTheme:hover { border: 1px solid #5964ff; }
+
+.ld-tertiaryLightTheme:active {
+    background-color: #eef3ff;
+    border: 1px solid #5964ff;
+}
+
+.ld-tertiaryDarkTheme {
+    color: #E8E8E8 !important;
+    background-color: #373945;
+    border: 1px solid #373945;
+}
+  
+.ld-tertiaryDarkTheme:hover { border: 1px solid #5964ff; }
+
+.ld-tertiaryDarkTheme:active {
+    background-color: #55596B;
+    border: 1px solid #5964ff;
+}
+
+.ld-destructive {
+    color: white !important;
+    background-color: #ff6760;
+    border: 1px solid #ff6760;
+}
+  
+.ld-destructive:hover {
+    background-color: #ff8383;
+    border: 1px solid #ff8383;
+}
+  
+.ld-destructive:active { background-color: #fca2a2; }
+  
+.ld-transparent {
+    background-color: transparent;
+    border: none;
+    color: #8c96ad !important;
+}
+  
+.ld-transparent:hover { color: #7a89fc !important; }
+.ld-transparent:active { color: #9fabff !important; }</style><style>.ld-success { background-color: #16d090; }
+.ld-info { background-color: #03c9f7; }
+.ld-warning { background-color: #fdbe00; }
+.ld-error { background-color: #ff6760;}</style><style>/* LightTheme */
+.ld-no-border-LightTheme {
+    width: 448px; 
+}
+  
+.ld-no-border-LightTheme .modal-content { border: none !important;  background-color: white; }
+
+.ld-no-border2-LightTheme {
+    width: 600px;
+    max-width: 600px;
+}
+
+.ld-no-border2-LightTheme .modal-content { border: none !important;  background-color: white; }
+
+/* DarkTheme */
+.ld-no-border-DarkTheme {
+    width: 448px; 
+}
+  
+.ld-no-border-DarkTheme .modal-content { border: none !important; background-color: #2a2d3a; }
+
+.ld-no-border2-DarkTheme {
+    width: 600px;
+    max-width: 600px;
+}
+
+.ld-no-border2-DarkTheme .modal-content { border: none !important; background-color: #2a2d3a; }
+
+.ld-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.24);
+    z-index: 10000000000;
+}
+
+.ld-modal {
+    z-index: 10000000001;
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.ld-modal.show {
+    display: flex !important; 
+}
+</style><style>/* LightTheme */
+.ld-colors-actions-dropdown-LightTheme {
+    border: none;
+    height: 16px;
+    background-color: transparent;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+  
+.ld-colors-actions-dropdown-LightTheme + div {
+    width: 240px;
+    padding: 10px 0;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    border: none;
+    margin: 10px 0;
+    z-index: 100000;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+  
+.ld-colors-actions-dropdown-LightTheme + div a {
+    height: 32px;
+    font-family: Nunito Sans;
+    font-size: 14px;
+    line-height: 32px;
+    color: #333951;
+    padding: 0 20px;
+    vertical-align: middle;
+    position: relative;
+    text-decoration: none !important;
+}
+
+.ld-colors-actions-dropdown-LightTheme + div a img { 
+    display: none; 
+}
+  
+.ld-colors-actions-dropdown-LightTheme + div a:hover {
+    color: #7a89fc;
+    background-color: #f6f8fb;
+}
+  
+.ld-colors-actions-dropdown-LightTheme:focus { outline: none; }
+.ld-colors-actions-dropdown-LightTheme::after { content: none; } 
+
+.LDSidebar .dropdown-menu {
+    display: none !important;
+}
+
+.LDSidebar .dropdown-menu.show {
+    display: flex !important; 
+    flex-direction: column;
+    background: white;
+    min-width: 154px;
+    border-radius: 8px;
+}
+
+.LDSidebar .dropdown-menu.show .ld-icon-more {
+    fill: #5964ff; 
+}
+
+.LDSidebar .dropdown-menu[disabled] .ld-icon-more {
+    opacity: 0.54;
+}
+
+.LDSidebar .dropdown-menu a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+}
+@media print {
+    .LDSidebar {
+       visibility: hidden;
+    }
+ }
+
+/* DarkTheme */
+.ld-colors-actions-dropdown-DarkTheme {
+    border: none;
+    height: 16px;
+    background-color: transparent;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.ld-colors-actions-dropdown-DarkTheme + div {
+    width: 240px;
+    padding: 10px 0;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    border: none;
+    margin: 10px 0;
+    z-index: 3;
+    background-color: #424551;
+}
+  
+.ld-colors-actions-dropdown-DarkTheme + div a {
+    height: 32px;
+    font-family: Nunito Sans;
+    font-size: 14px;
+    line-height: 32px;
+    color: #FFF;
+    padding: 0 20px;
+    vertical-align: middle;
+    position: relative;
+}
+  
+.ld-colors-actions-dropdown-DarkTheme + div a:hover {
+    color: #7a89fc;
+    background-color: #505464;
+}
+  
+.ld-colors-actions-dropdown-DarkTheme:focus { outline: none; }
+.ld-colors-actions-dropdown-DarkTheme::after { content: none; }</style><style>.assistant-dropdown + div {
+    box-shadow: 0 0 12px 0 rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    border: none;
+    background-color: #FFF;
+    transform: translate(0px, 10px) !important;
+    width: 350px;
+    padding: 16px !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 12px;
+}
+
+button.assistant-dropdown-primary {
+    border: none;
+    background: transparent;
+    padding: 3px;
+}
+button.assistant-dropdown-primary::after {
+    content: none;
+}</style><style>/* .color-change-2x {
+  animation: color-change-2x 0.5s linear infinite alternate both;
+}
+
+@keyframes color-change-2x {
+  0% {
+    background: #f6f8fb;
+  }
+  100% {
+    background: #e4eaf3;
+  }
+}
+
+.fade-in {
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+} */
+
+.LDToast {
+  font-family: Nunito Sans;
+  z-index: 2000000000;
+  transition: all .5s ease;
+  position: fixed;
+  bottom: 30px;
+  left: -900px;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  box-sizing: boreder-box;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.LDToast.success{
+  background: #16d090;;
+}
+
+.LDToast.error{
+  background: #ff6760;
+}
+
+.LDToast.info{
+  background: #03c9f7;
+}
+
+.LDToast.warning{
+  background: #fdbe00;
+}
+
+.LDToast.show{
+  left: 20px;
+}
+
+</style><link href="chrome-extension://lelehponoadknmgbnmgkcniabpopckme/assets/injector.css" rel="stylesheet" charset="utf-8"></head> <body> <div id="new-turn"></div><div id="infos"> <div id="top-menu-button"><a id="index-banner" href="https://age-of-olympia.net/index.php?menu"><img src="./board_files/index.webp"></a></div> <table border="0" align="center"> <tbody><tr> <td align="left" class="player-info"> <a href="https://age-of-olympia.net/infos.php?targetId=21">Glenefal</a> (mat.21)<br> <!--sup>Nain Rang 3</sup--> <sup>Prochain tour à <a href="https://age-of-olympia.net/#" title="dans 0j 3h 6m">23:04</a></sup> </td> <td> <div id="player-avatar"> <a href="https://age-of-olympia.net/pnjs.php"><img src="./board_files/61.png"></a> </div> </td> <td align="left" class="player-info"> <a href="https://age-of-olympia.net/forum.php?lastPosts">Derniers messages</a> du <a href="https://age-of-olympia.net/forum.php">Forum</a><br> <sup><i>Dans <a href="https://age-of-olympia.net/forum.php?topic=1735940034322&amp;page=1#1735990699862">TP qui TP ...</a> par Cradek Barbibelle</i></sup> </td> </tr> </tbody></table> </div><div id="menu"><a href="https://age-of-olympia.net/index.php" title="Vue"><button>&nbsp;<span class="ra ra-chessboard"></span>&nbsp;</button></a><a href="https://age-of-olympia.net/#" id="show-caracs" title="Caractéristiques"><button><span class="ra ra-muscle-up"></span>&nbsp;Caractéristiques</button></a><a href="https://age-of-olympia.net/inventory.php"><button><span class="ra ra-key"></span> Inventaire</button></a><!--a href="upgrades.php"><button><span class="ra ra-podium"></span> Améliorations</button></a--><a href="https://age-of-olympia.net/logs.php?light"><button><span class="ra ra-book"></span> Evènements</button></a><a href="https://age-of-olympia.net/map.php" title="Carte"><button>&nbsp;<span class="ra ra-scroll-unfurled"></span>&nbsp;</button></a><a href="https://age-of-olympia.net/forum.php?forum=Missives" title="Missives"><button>&nbsp;<span class="ra ra-quill-ink"></span>&nbsp;</button></a><a href="https://age-of-olympia.net/account.php" title="Profil"><button>&nbsp;<span class="ra ra-wrench"></span>&nbsp;</button></a><div id="load-caracs"></div> <script> $(document).ready(function(){ $('#show-caracs').click(function(e){ e.preventDefault(); if($('#load-caracs').is(':hidden')){ $.ajax({ type: "POST", url: 'load_caracs.php', success: function(data) { $('#load-caracs').html(data).fadeIn(); } }); } else{ $('#load-caracs').hide(); } }); $('.menu-link').click(function(e){ e.preventDefault(); let url = $(this).attr('href'); $.ajax({ type: "POST", url: url, success: function(data) { $('#ajax-data').html(data); } }); }); }); </script> </div> <div id="view"> <div id="svg-container"> <!--?xml version="1.0" encoding="UTF-8" standalone="no"?--> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" id="svg-view" width="550" height="550" style="background: url(&#39;img/tiles/underground.webp&#39;);" class="box-shadow"> <image id="tiles4758" width="50" height="50" data-table="tiles" x="400" y="0" href="img/tiles/caverne.png"></image> <image id="tiles4727" width="50" height="50" data-table="tiles" x="450" y="200" href="img/tiles/caverne.png"></image> <image id="tiles4662" width="50" height="50" data-table="tiles" x="350" y="500" href="img/tiles/caverne.png"></image> <image id="tiles4748" width="50" height="50" data-table="tiles" x="350" y="400" href="img/tiles/caverne.png"></image> <image id="tiles4350" width="50" height="50" data-table="tiles" x="250" y="350" href="img/tiles/caverne.png"></image> <image id="tiles4693" width="50" height="50" data-table="tiles" x="150" y="150" href="img/tiles/caverne.png"></image> <image id="tiles4378" width="50" height="50" data-table="tiles" x="0" y="450" href="img/tiles/caverne.png"></image> <image id="tiles4709" width="50" height="50" data-table="tiles" x="300" y="350" href="img/tiles/caverne.png"></image> <image id="tiles4473" width="50" height="50" data-table="tiles" x="150" y="50" href="img/tiles/caverne.png"></image> <image id="tiles4722" width="50" height="50" data-table="tiles" x="450" y="150" href="img/tiles/caverne.png"></image> <image id="tiles4599" width="50" height="50" data-table="tiles" x="150" y="500" href="img/tiles/caverne.png"></image> <image id="tiles4742" width="50" height="50" data-table="tiles" x="500" y="400" href="img/tiles/caverne.png"></image> <image id="tiles4334" width="50" height="50" data-table="tiles" x="300" y="400" href="img/tiles/caverne.png"></image> <image id="tiles4688" width="50" height="50" data-table="tiles" x="50" y="150" href="img/tiles/caverne.png"></image> <image id="tiles4368" width="50" height="50" data-table="tiles" x="450" y="450" href="img/tiles/caverne.png"></image> <image id="tiles4704" width="50" height="50" data-table="tiles" x="200" y="350" href="img/tiles/caverne.png"></image> <image id="tiles4715" width="50" height="50" data-table="tiles" x="350" y="100" href="img/tiles/caverne.png"></image> <image id="tiles4484" width="50" height="50" data-table="tiles" x="500" y="50" href="img/tiles/caverne.png"></image> <image id="tiles4735" width="50" height="50" data-table="tiles" x="350" y="300" href="img/tiles/caverne.png"></image> <image id="tiles4678" width="50" height="50" data-table="tiles" x="50" y="400" href="img/tiles/caverne.png"></image> <image id="tiles4356" width="50" height="50" data-table="tiles" x="250" y="50" href="img/tiles/caverne.png"></image> <image id="tiles4699" width="50" height="50" data-table="tiles" x="150" y="250" href="img/tiles/caverne.png"></image> <image id="tiles4468" width="50" height="50" data-table="tiles" x="50" y="100" href="img/tiles/caverne.png"></image> <image id="tiles4479" width="50" height="50" data-table="tiles" x="400" y="50" href="img/tiles/caverne.png"></image> <image id="tiles4728" width="50" height="50" data-table="tiles" x="500" y="200" href="img/tiles/caverne.png"></image> <image id="tiles4673" width="50" height="50" data-table="tiles" x="0" y="200" href="img/tiles/caverne.png"></image> <image id="tiles4749" width="50" height="50" data-table="tiles" x="400" y="400" href="img/tiles/caverne.png"></image> <image id="tiles4351" width="50" height="50" data-table="tiles" x="250" y="300" href="img/tiles/caverne.png"></image> <image id="tiles4694" width="50" height="50" data-table="tiles" x="150" y="100" href="img/tiles/caverne.png"></image> <image id="tiles4394" width="50" height="50" data-table="tiles" x="0" y="50" href="img/tiles/caverne.png"></image> <image id="tiles4710" width="50" height="50" data-table="tiles" x="300" y="300" href="img/tiles/caverne.png"></image> <image id="tiles4754" width="50" height="50" data-table="tiles" x="200" y="0" href="img/tiles/caverne.png"></image> <image id="tiles4723" width="50" height="50" data-table="tiles" x="400" y="150" href="img/tiles/caverne.png"></image> <image id="tiles4658" width="50" height="50" data-table="tiles" x="500" y="500" href="img/tiles/caverne.png"></image> <image id="tiles4744" width="50" height="50" data-table="tiles" x="450" y="400" href="img/tiles/caverne.png"></image> <image id="tiles4335" width="50" height="50" data-table="tiles" x="300" y="450" href="img/tiles/caverne.png"></image> <image id="tiles4689" width="50" height="50" data-table="tiles" x="50" y="200" href="img/tiles/caverne.png"></image> <image id="tiles4369" width="50" height="50" data-table="tiles" x="500" y="450" href="img/tiles/caverne.png"></image> <image id="tiles4705" width="50" height="50" data-table="tiles" x="150" y="350" href="img/tiles/caverne.png"></image> <image id="tiles4716" width="50" height="50" data-table="tiles" x="400" y="100" href="img/tiles/caverne.png"></image> <image id="tiles4594" width="50" height="50" data-table="tiles" x="0" y="500" href="img/tiles/caverne.png"></image> <image id="tiles4736" width="50" height="50" data-table="tiles" x="400" y="300" href="img/tiles/caverne.png"></image> <image id="tiles4796" width="50" height="50" data-table="tiles" x="250" y="450" href="img/tiles/caverne.png"></image> <image id="tiles4679" width="50" height="50" data-table="tiles" x="50" y="350" href="img/tiles/caverne.png"></image> <image id="tiles4755" width="50" height="50" data-table="tiles" x="250" y="0" href="img/tiles/caverne.png"></image> <image id="tiles4700" width="50" height="50" data-table="tiles" x="100" y="250" href="img/tiles/caverne.png"></image> <image id="tiles4469" width="50" height="50" data-table="tiles" x="50" y="50" href="img/tiles/caverne.png"></image> <image id="tiles4756" width="50" height="50" data-table="tiles" x="300" y="0" href="img/tiles/caverne.png"></image> <image id="tiles4731" width="50" height="50" data-table="tiles" x="500" y="250" href="img/tiles/caverne.png"></image> <image id="tiles4674" width="50" height="50" data-table="tiles" x="0" y="250" href="img/tiles/caverne.png"></image> <image id="tiles4352" width="50" height="50" data-table="tiles" x="250" y="250" href="img/tiles/caverne.png"></image> <image id="tiles4695" width="50" height="50" data-table="tiles" x="200" y="100" href="img/tiles/caverne.png"></image> <image id="tiles4751" width="50" height="50" data-table="tiles" x="50" y="0" href="img/tiles/caverne.png"></image> <image id="tiles4711" width="50" height="50" data-table="tiles" x="300" y="250" href="img/tiles/caverne.png"></image> <image id="tiles4475" width="50" height="50" data-table="tiles" x="200" y="50" href="img/tiles/caverne.png"></image> <image id="tiles4724" width="50" height="50" data-table="tiles" x="350" y="150" href="img/tiles/caverne.png"></image> <image id="tiles4659" width="50" height="50" data-table="tiles" x="450" y="500" href="img/tiles/caverne.png"></image> <image id="tiles4745" width="50" height="50" data-table="tiles" x="450" y="350" href="img/tiles/caverne.png"></image> <image id="tiles4336" width="50" height="50" data-table="tiles" x="300" y="500" href="img/tiles/caverne.png"></image> <image id="tiles4690" width="50" height="50" data-table="tiles" x="100" y="150" href="img/tiles/caverne.png"></image> <image id="tiles4375" width="50" height="50" data-table="tiles" x="150" y="450" href="img/tiles/caverne.png"></image> <image id="tiles4706" width="50" height="50" data-table="tiles" x="100" y="350" href="img/tiles/caverne.png"></image> <image id="tiles4717" width="50" height="50" data-table="tiles" x="450" y="100" href="img/tiles/caverne.png"></image> <image id="tiles4595" width="50" height="50" data-table="tiles" x="50" y="500" href="img/tiles/caverne.png"></image> <image id="tiles4737" width="50" height="50" data-table="tiles" x="450" y="300" href="img/tiles/caverne.png"></image> <image id="tiles4331" width="50" height="50" data-table="tiles" x="200" y="450" href="img/tiles/caverne.png"></image> <image id="tiles4680" width="50" height="50" data-table="tiles" x="50" y="300" href="img/tiles/caverne.png"></image> <image id="tiles4759" width="50" height="50" data-table="tiles" x="450" y="0" href="img/tiles/caverne.png"></image> <image id="tiles4701" width="50" height="50" data-table="tiles" x="100" y="300" href="img/tiles/caverne.png"></image> <image id="tiles4470" width="50" height="50" data-table="tiles" x="100" y="50" href="img/tiles/caverne.png"></image> <image id="tiles4481" width="50" height="50" data-table="tiles" x="350" y="50" href="img/tiles/caverne.png"></image> <image id="tiles4732" width="50" height="50" data-table="tiles" x="450" y="250" href="img/tiles/caverne.png"></image> <image id="tiles4675" width="50" height="50" data-table="tiles" x="0" y="300" href="img/tiles/caverne.png"></image> <image id="tiles4353" width="50" height="50" data-table="tiles" x="250" y="200" href="img/tiles/caverne.png"></image> <image id="tiles4696" width="50" height="50" data-table="tiles" x="200" y="150" href="img/tiles/caverne.png"></image> <image id="tiles4750" width="50" height="50" data-table="tiles" x="0" y="0" href="img/tiles/caverne.png"></image> <image id="tiles4712" width="50" height="50" data-table="tiles" x="300" y="200" href="img/tiles/caverne.png"></image> <image id="tiles4476" width="50" height="50" data-table="tiles" x="300" y="50" href="img/tiles/caverne.png"></image> <image id="tiles4725" width="50" height="50" data-table="tiles" x="350" y="200" href="img/tiles/caverne.png"></image> <image id="tiles4660" width="50" height="50" data-table="tiles" x="400" y="500" href="img/tiles/caverne.png"></image> <image id="tiles4746" width="50" height="50" data-table="tiles" x="400" y="350" href="img/tiles/caverne.png"></image> <image id="tiles4838" width="50" height="50" data-table="tiles" x="250" y="500" href="img/tiles/escalier_vers_le_haut.png"></image> <image id="tiles4691" width="50" height="50" data-table="tiles" x="100" y="200" href="img/tiles/caverne.png"></image> <image id="tiles4376" width="50" height="50" data-table="tiles" x="100" y="450" href="img/tiles/caverne.png"></image> <image id="tiles4707" width="50" height="50" data-table="tiles" x="100" y="400" href="img/tiles/caverne.png"></image> <image id="tiles4752" width="50" height="50" data-table="tiles" x="100" y="0" href="img/tiles/caverne.png"></image> <image id="tiles4718" width="50" height="50" data-table="tiles" x="500" y="100" href="img/tiles/caverne.png"></image> <image id="tiles4597" width="50" height="50" data-table="tiles" x="100" y="500" href="img/tiles/caverne.png"></image> <image id="tiles4738" width="50" height="50" data-table="tiles" x="500" y="300" href="img/tiles/caverne.png"></image> <image id="tiles4332" width="50" height="50" data-table="tiles" x="200" y="400" href="img/tiles/caverne.png"></image> <image id="tiles4681" width="50" height="50" data-table="tiles" x="50" y="250" href="img/tiles/caverne.png"></image> <image id="tiles4366" width="50" height="50" data-table="tiles" x="350" y="450" href="img/tiles/caverne.png"></image> <image id="tiles4702" width="50" height="50" data-table="tiles" x="150" y="300" href="img/tiles/caverne.png"></image> <image id="tiles4482" width="50" height="50" data-table="tiles" x="450" y="50" href="img/tiles/caverne.png"></image> <image id="tiles4733" width="50" height="50" data-table="tiles" x="400" y="250" href="img/tiles/caverne.png"></image> <image id="tiles4676" width="50" height="50" data-table="tiles" x="0" y="350" href="img/tiles/caverne.png"></image> <image id="tiles4354" width="50" height="50" data-table="tiles" x="250" y="150" href="img/tiles/caverne.png"></image> <image id="tiles4697" width="50" height="50" data-table="tiles" x="200" y="200" href="img/tiles/caverne.png"></image> <image id="tiles4466" width="50" height="50" data-table="tiles" x="0" y="150" href="img/tiles/caverne.png"></image> <image id="tiles4713" width="50" height="50" data-table="tiles" x="300" y="150" href="img/tiles/caverne.png"></image> <image id="tiles4757" width="50" height="50" data-table="tiles" x="350" y="0" href="img/tiles/caverne.png"></image> <image id="tiles4726" width="50" height="50" data-table="tiles" x="400" y="200" href="img/tiles/caverne.png"></image> <image id="tiles4661" width="50" height="50" data-table="tiles" x="350" y="500" href="img/tiles/caverne.png"></image> <image id="tiles4747" width="50" height="50" data-table="tiles" x="350" y="350" href="img/tiles/caverne.png"></image> <image id="tiles4338" width="50" height="50" data-table="tiles" x="200" y="500" href="img/tiles/caverne.png"></image> <image id="tiles4692" width="50" height="50" data-table="tiles" x="150" y="200" href="img/tiles/caverne.png"></image> <image id="tiles4377" width="50" height="50" data-table="tiles" x="50" y="450" href="img/tiles/caverne.png"></image> <image id="tiles4708" width="50" height="50" data-table="tiles" x="150" y="400" href="img/tiles/caverne.png"></image> <image id="tiles4753" width="50" height="50" data-table="tiles" x="150" y="0" href="img/tiles/caverne.png"></image> <image id="tiles4721" width="50" height="50" data-table="tiles" x="500" y="150" href="img/tiles/caverne.png"></image> <image id="tiles4598" width="50" height="50" data-table="tiles" x="100" y="500" href="img/tiles/caverne.png"></image> <image id="tiles4741" width="50" height="50" data-table="tiles" x="500" y="350" href="img/tiles/caverne.png"></image> <image id="tiles4333" width="50" height="50" data-table="tiles" x="250" y="400" href="img/tiles/caverne.png"></image> <image id="tiles4687" width="50" height="50" data-table="tiles" x="100" y="100" href="img/tiles/caverne.png"></image> <image id="tiles4367" width="50" height="50" data-table="tiles" x="400" y="450" href="img/tiles/caverne.png"></image> <image id="tiles4703" width="50" height="50" data-table="tiles" x="200" y="300" href="img/tiles/caverne.png"></image> <image id="tiles4760" width="50" height="50" data-table="tiles" x="500" y="0" href="img/tiles/caverne.png"></image> <image id="tiles4734" width="50" height="50" data-table="tiles" x="350" y="250" href="img/tiles/caverne.png"></image> <image id="tiles4677" width="50" height="50" data-table="tiles" x="0" y="400" href="img/tiles/caverne.png"></image> <image id="tiles4355" width="50" height="50" data-table="tiles" x="250" y="100" href="img/tiles/caverne.png"></image> <image id="tiles4698" width="50" height="50" data-table="tiles" x="200" y="250" href="img/tiles/caverne.png"></image> <image id="tiles4467" width="50" height="50" data-table="tiles" x="0" y="100" href="img/tiles/caverne.png"></image> <image id="tiles4714" width="50" height="50" data-table="tiles" x="300" y="100" href="img/tiles/caverne.png"></image> <image width="50" height="50" data-table="elements" x="300" y="350" style="opacity: 0.5;" href="img/elements/trace_pas_n.webp"></image> <image width="50" height="50" data-table="elements" x="450" y="200" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="300" y="500" style="opacity: 0.5;" href="img/elements/trace_pas_n.webp"></image> <image width="50" height="50" data-table="elements" x="350" y="500" style="opacity: 0.5;" href="img/elements/trace_pas_o.webp"></image> <image width="50" height="50" data-table="elements" x="200" y="200" style="opacity: 1;" href="img/elements/sang.png"></image> <image width="50" height="50" data-table="elements" x="450" y="150" style="opacity: 0.5;" href="img/elements/trace_pas_o.webp"></image> <image width="50" height="50" data-table="elements" x="300" y="400" style="opacity: 0.5;" href="img/elements/trace_pas_n.webp"></image> <image width="50" height="50" data-table="elements" x="450" y="400" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="500" y="0" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="50" y="400" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="450" y="100" style="opacity: 0.5;" href="img/elements/trace_pas_e.webp"></image> <image width="50" height="50" data-table="elements" x="200" y="400" style="opacity: 0.5;" href="img/elements/trace_pas_no.webp"></image> <image width="50" height="50" data-table="elements" x="400" y="300" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="250" y="350" style="opacity: 0.5;" href="img/elements/trace_pas_no.webp"></image> <image width="50" height="50" data-table="elements" x="300" y="300" style="opacity: 0.5;" href="img/elements/trace_pas_n.webp"></image> <image width="50" height="50" data-table="elements" x="500" y="250" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="300" y="500" style="opacity: 0.5;" href="img/elements/trace_pas_no.webp"></image> <image width="50" height="50" data-table="elements" x="0" y="200" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="200" y="200" style="opacity: 0.5;" href="img/elements/trace_pas_n.webp"></image> <image width="50" height="50" data-table="elements" x="400" y="150" style="opacity: 0.5;" href="img/elements/trace_pas_e.webp"></image> <image width="50" height="50" data-table="elements" x="300" y="450" style="opacity: 0.5;" href="img/elements/trace_pas_no.webp"></image> <image width="50" height="50" data-table="elements" x="450" y="350" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="450" y="500" style="opacity: 1;" href="img/elements/sang.png"></image> <image width="50" height="50" data-table="elements" x="50" y="300" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="500" y="100" style="opacity: 0.5;" href="img/elements/trace_pas_e.webp"></image> <image width="50" height="50" data-table="elements" x="200" y="400" style="opacity: 0.5;" href="img/elements/trace_pas_se.webp"></image> <image width="50" height="50" data-table="elements" x="450" y="300" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="250" y="250" style="opacity: 1;" href="img/elements/sang.png"></image> <image width="50" height="50" data-table="elements" x="300" y="300" style="opacity: 0.5;" href="img/elements/trace_pas_ne.webp"></image> <image width="50" height="50" data-table="elements" x="250" y="450" style="opacity: 0.5;" href="img/elements/trace_pas_n.webp"></image> <image width="50" height="50" data-table="elements" x="450" y="250" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="300" y="500" style="opacity: 0.5;" href="img/elements/trace_pas_o.webp"></image> <image width="50" height="50" data-table="elements" x="0" y="250" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="200" y="300" style="opacity: 0.5;" href="img/elements/trace_pas_n.webp"></image> <image width="50" height="50" data-table="elements" x="400" y="150" style="opacity: 0.5;" href="img/elements/trace_pas_ne.webp"></image> <image width="50" height="50" data-table="elements" x="300" y="450" style="opacity: 0.5;" href="img/elements/trace_pas_se.webp"></image> <image width="50" height="50" data-table="elements" x="400" y="500" style="opacity: 0.5;" href="img/elements/trace_pas_no.webp"></image> <image width="50" height="50" data-table="elements" x="50" y="150" style="opacity: 0.5;" href="img/elements/trace_pas_e.webp"></image> <image width="50" height="50" data-table="elements" x="500" y="150" style="opacity: 0.5;" href="img/elements/trace_pas_o.webp"></image> <image width="50" height="50" data-table="elements" x="200" y="400" style="opacity: 0.5;" href="img/elements/trace_pas_so.webp"></image> <image width="50" height="50" data-table="elements" x="500" y="300" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="350" y="450" style="opacity: 0.5;" href="img/elements/trace_pas_no.webp"></image> <image width="50" height="50" data-table="elements" x="0" y="300" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="300" y="300" style="opacity: 0.5;" href="img/elements/trace_pas_no.webp"></image> <image width="50" height="50" data-table="elements" x="250" y="450" style="opacity: 0.5;" href="img/elements/trace_pas_s.webp"></image> <image width="50" height="50" data-table="elements" x="400" y="250" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="200" y="500" style="opacity: 0.5;" href="img/elements/trace_pas_ne.webp"></image> <image width="50" height="50" data-table="elements" x="150" y="350" style="opacity: 0.5;" href="img/elements/trace_pas_n.webp"></image> <image width="50" height="50" data-table="elements" x="400" y="150" style="opacity: 0.5;" href="img/elements/trace_pas_o.webp"></image> <image width="50" height="50" data-table="elements" x="300" y="450" style="opacity: 0.5;" href="img/elements/trace_pas_so.webp"></image> <image width="50" height="50" data-table="elements" x="350" y="500" style="opacity: 1;" href="img/elements/sang.png"></image> <image width="50" height="50" data-table="elements" x="100" y="150" style="opacity: 0.5;" href="img/elements/trace_pas_se.webp"></image> <image width="50" height="50" data-table="elements" x="500" y="150" style="opacity: 0.5;" href="img/elements/trace_pas_se.webp"></image> <image width="50" height="50" data-table="elements" x="250" y="400" style="opacity: 0.5;" href="img/elements/trace_pas_n.webp"></image> <image width="50" height="50" data-table="elements" x="500" y="350" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="0" y="0" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="0" y="350" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="300" y="200" style="opacity: 1;" href="img/elements/sang.png"></image> <image width="50" height="50" data-table="elements" x="250" y="450" style="opacity: 0.5;" href="img/elements/trace_pas_se.webp"></image> <image width="50" height="50" data-table="elements" x="350" y="250" style="opacity: 1;" href="img/elements/sang.png"></image> <image width="50" height="50" data-table="elements" x="200" y="500" style="opacity: 0.5;" href="img/elements/trace_pas_se.webp"></image> <image width="50" height="50" data-table="elements" x="150" y="350" style="opacity: 0.5;" href="img/elements/trace_pas_no.webp"></image> <image width="50" height="50" data-table="elements" x="350" y="150" style="opacity: 0.5;" href="img/elements/trace_pas_e.webp"></image> <image width="50" height="50" data-table="elements" x="300" y="500" style="opacity: 0.5;" href="img/elements/trace_pas_e.webp"></image> <image width="50" height="50" data-table="elements" x="350" y="500" style="opacity: 0.5;" href="img/elements/trace_pas_n.webp"></image> <image width="50" height="50" data-table="elements" x="150" y="200" style="opacity: 0.5;" href="img/elements/trace_pas_e.webp"></image> <image width="50" height="50" data-table="elements" x="450" y="150" style="opacity: 0.5;" href="img/elements/trace_pas_e.webp"></image> <image width="50" height="50" data-table="elements" x="300" y="400" style="opacity: 1;" href="img/elements/sang.png"></image> <image width="50" height="50" data-table="elements" x="500" y="400" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="0" y="150" style="opacity: 0.5;" href="img/elements/trace_pas_e.webp"></image> <image width="50" height="50" data-table="elements" x="0" y="400" style="opacity: 0.5;" href="img/elements/eau.webp"></image> <image width="50" height="50" data-table="elements" x="300" y="200" style="opacity: 0.5;" href="img/elements/trace_pas_ne.webp"></image> <image width="50" height="50" data-table="elements" x="200" y="400" style="opacity: 0.5;" href="img/elements/trace_pas_ne.webp"></image> <image width="50" height="50" data-table="elements" x="350" y="250" style="opacity: 0.5;" href="img/elements/trace_pas_so.webp"></image> <image width="50" height="50" data-table="elements" x="250" y="350" style="opacity: 0.5;" href="img/elements/trace_pas_ne.webp"></image> <rect class="case" x="150" y="300" width="50" height="50" style="fill: transparent; stroke-width: 5; stroke: #ff9933"></rect> <image id="players-15" width="50" height="50" x="150" y="300" href="img/avatars/dieu/50.png" class="avatar-shadow"></image> <image id="players-15" width="50" height="50" data-table="players" x="150" y="300" href="img/avatars/dieu/50.png"></image> <rect class="case" x="250" y="450" width="50" height="50" style="fill: transparent; stroke-width: 5; stroke: #FF0000"></rect> <image id="players35" width="50" height="50" x="250" y="450" href="img/avatars/nain/18.png" class="avatar-shadow"></image> <image id="players35" width="50" height="50" data-table="players" x="250" y="450" href="img/avatars/nain/18.png"></image> <rect class="case" x="250" y="400" width="50" height="50" style="fill: transparent; stroke-width: 5; stroke: #FF0000"></rect> <image id="players7" width="50" height="50" x="250" y="400" href="img/avatars/nain/5.png" class="avatar-shadow"></image> <image id="players7" width="50" height="50" data-table="players" x="250" y="400" href="img/avatars/nain/5.png"></image> <rect class="case" x="300" y="250" width="50" height="50" style="fill: transparent; stroke-width: 5; stroke: #FF0000"></rect> <image id="players36" width="50" height="50" x="300" y="250" href="img/avatars/nain/95.png" class="avatar-shadow"></image> <image id="players36" width="50" height="50" data-table="players" x="300" y="250" href="img/avatars/nain/95.png"></image> <rect class="case" x="150" y="450" width="50" height="50" style="fill: transparent; stroke-width: 5; stroke: #FF0000"></rect> <image id="players10" width="50" height="50" x="150" y="450" href="img/avatars/nain/73.png" class="avatar-shadow"></image> <image id="players10" width="50" height="50" data-table="players" x="150" y="450" href="img/avatars/nain/73.png"></image> <rect class="case" x="300" y="450" width="50" height="50" style="fill: transparent; stroke-width: 5; stroke: #D2B48C"></rect> <image id="players-90" width="50" height="50" x="300" y="450" href="img/avatars/animal/avatar_golem_glace.png" class="avatar-shadow"></image> <image id="players-90" width="50" height="50" data-table="players" x="300" y="450" href="img/avatars/animal/avatar_golem_glace.png"></image> <rect class="case" x="100" y="300" width="50" height="50" style="fill: transparent; stroke-width: 5; stroke: white"></rect> <image id="players45" width="50" height="50" x="100" y="300" href="img/avatars/lutin/7.png" class="avatar-shadow"></image> <image id="players45" width="50" height="50" data-table="players" x="100" y="300" href="img/avatars/lutin/7.png"></image> <rect class="case" x="200" y="250" width="50" height="50" style="fill: transparent; stroke-width: 5; stroke: #FF0000"></rect> <image id="players12" width="50" height="50" x="200" y="250" href="img/avatars/nain/38.png" class="avatar-shadow"></image> <image id="players12" width="50" height="50" data-table="players" x="200" y="250" href="img/avatars/nain/38.png"></image> <rect class="case" x="350" y="450" width="50" height="50" style="fill: transparent; stroke-width: 5; stroke: #D2B48C"></rect> <image id="players-88" width="50" height="50" x="350" y="450" href="img/avatars/animal/avatar_golem_glace.png" class="avatar-shadow"></image> <image id="players-88" width="50" height="50" data-table="players" x="350" y="450" href="img/avatars/animal/avatar_golem_glace.png"></image> <rect class="case" x="300" y="400" width="50" height="50" style="fill: transparent; stroke-width: 5; stroke: #FF0000"></rect> <image id="players69" width="50" height="50" x="300" y="400" href="img/avatars/nain/1.png" class="avatar-shadow"></image> <image id="players69" width="50" height="50" data-table="players" x="300" y="400" href="img/avatars/nain/1.png"></image> <rect class="case" x="250" y="250" width="50" height="50" style="fill: transparent; stroke-width: 5; stroke: #FF0000"></rect> <image id="players21" width="50" height="50" x="250" y="250" href="img/avatars/nain/61.png" class="avatar-shadow"></image> <image id="players21" width="50" height="50" data-table="players" x="250" y="250" href="img/avatars/nain/61.png"></image> <rect class="case" x="200" y="150" width="50" height="50" style="fill: transparent; stroke-width: 5; stroke: #D2B48C"></rect> <image id="players-85" width="50" height="50" x="200" y="150" href="img/avatars/animal/avatar_golem_glace.png" class="avatar-shadow"></image> <image id="players-85" width="50" height="50" data-table="players" x="200" y="150" href="img/avatars/animal/avatar_golem_glace.png"></image> <rect class="case" x="300" y="300" width="50" height="50" style="fill: transparent; stroke-width: 5; stroke: #FF0000"></rect> <image id="players25" width="50" height="50" x="300" y="300" href="img/avatars/nain/50.png" class="avatar-shadow"></image> <image id="players25" width="50" height="50" data-table="players" x="300" y="300" href="img/avatars/nain/50.png"></image> <image id="walls5393" width="50" height="50" data-table="walls" x="400" y="100" href="img/walls/pic_glace2.png"></image> <image id="walls5394" width="50" height="50" data-table="walls" x="0" y="100" href="img/walls/pic_glace2.png"></image> <image id="walls5412" width="50" height="50" data-table="walls" x="400" y="200" href="img/walls/pilier.png"></image> <image id="walls5399" width="50" height="50" data-table="walls" x="0" y="500" href="img/walls/pic_glace3.png"></image> <image id="walls5422" width="50" height="50" data-table="walls" x="450" y="300" href="img/walls/statues4.png" class="transparent-gradient"></image> <image id="walls5411" width="50" height="50" data-table="walls" x="100" y="200" href="img/walls/pilier.png"></image> <image id="walls5405" width="50" height="50" data-table="walls" x="350" y="400" href="img/walls/pic_glace3.png"></image> <image id="walls5401" width="50" height="50" data-table="walls" x="150" y="100" href="img/walls/pic_glace3.png"></image> <image id="walls5410" width="50" height="50" data-table="walls" x="400" y="400" href="img/walls/pilier.png"></image> <image id="walls5407" width="50" height="50" data-table="walls" x="100" y="400" href="img/walls/pilier.png"></image> <image id="walls5384" width="50" height="50" data-table="walls" x="250" y="300" href="img/walls/pic_glace1.png"></image> <image class="case " data-coords="-5,9" x="0" y="0" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-5,8" x="0" y="50" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-5,7" x="0" y="100" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-5,6" x="0" y="150" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-5,5" x="0" y="200" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-5,4" x="0" y="250" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-5,3" x="0" y="300" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-5,2" x="0" y="350" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-5,1" x="0" y="400" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-5,0" x="0" y="450" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-5,-1" x="0" y="500" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-4,9" x="50" y="0" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-4,8" x="50" y="50" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-4,7" x="50" y="100" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-4,6" x="50" y="150" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-4,5" x="50" y="200" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-4,4" x="50" y="250" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-4,3" x="50" y="300" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-4,2" x="50" y="350" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-4,1" x="50" y="400" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-4,0" x="50" y="450" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-4,-1" x="50" y="500" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-3,9" x="100" y="0" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-3,8" x="100" y="50" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-3,7" x="100" y="100" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-3,6" x="100" y="150" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-3,5" x="100" y="200" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-3,4" x="100" y="250" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-3,3" x="100" y="300" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-3,2" x="100" y="350" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-3,1" x="100" y="400" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-3,0" x="100" y="450" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-3,-1" x="100" y="500" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-2,9" x="150" y="0" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-2,8" x="150" y="50" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-2,7" x="150" y="100" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-2,6" x="150" y="150" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-2,5" x="150" y="200" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-2,4" x="150" y="250" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-2,3" x="150" y="300" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-2,2" x="150" y="350" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-2,1" x="150" y="400" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-2,0" x="150" y="450" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-2,-1" x="150" y="500" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-1,9" x="200" y="0" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-1,8" x="200" y="50" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-1,7" x="200" y="100" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-1,6" x="200" y="150" href="img/ui/view/grid.webp"></image> <image class="case go" data-coords="-1,5" x="200" y="200" href="img/ui/view/grid.webp"></image> <image class="case go" data-coords="-1,4" x="200" y="250" href="img/ui/view/grid.webp"></image> <image class="case go" data-coords="-1,3" x="200" y="300" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-1,2" x="200" y="350" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-1,1" x="200" y="400" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-1,0" x="200" y="450" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="-1,-1" x="200" y="500" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="0,9" x="250" y="0" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="0,8" x="250" y="50" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="0,7" x="250" y="100" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="0,6" x="250" y="150" href="img/ui/view/grid.webp"></image> <image class="case go" data-coords="0,5" x="250" y="200" href="img/ui/view/grid.webp"></image> <image class="case go" data-coords="0,4" x="250" y="250" href="img/ui/view/grid.webp"></image> <image class="case go" data-coords="0,3" x="250" y="300" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="0,2" x="250" y="350" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="0,1" x="250" y="400" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="0,0" x="250" y="450" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="0,-1" x="250" y="500" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="1,9" x="300" y="0" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="1,8" x="300" y="50" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="1,7" x="300" y="100" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="1,6" x="300" y="150" href="img/ui/view/grid.webp"></image> <image class="case go" data-coords="1,5" x="300" y="200" href="img/ui/view/grid.webp"></image> <image class="case go" data-coords="1,4" x="300" y="250" href="img/ui/view/grid.webp"></image> <image class="case go" data-coords="1,3" x="300" y="300" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="1,2" x="300" y="350" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="1,1" x="300" y="400" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="1,0" x="300" y="450" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="1,-1" x="300" y="500" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="2,9" x="350" y="0" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="2,8" x="350" y="50" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="2,7" x="350" y="100" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="2,6" x="350" y="150" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="2,5" x="350" y="200" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="2,4" x="350" y="250" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="2,3" x="350" y="300" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="2,2" x="350" y="350" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="2,1" x="350" y="400" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="2,0" x="350" y="450" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="2,-1" x="350" y="500" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="3,9" x="400" y="0" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="3,8" x="400" y="50" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="3,7" x="400" y="100" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="3,6" x="400" y="150" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="3,5" x="400" y="200" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="3,4" x="400" y="250" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="3,3" x="400" y="300" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="3,2" x="400" y="350" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="3,1" x="400" y="400" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="3,0" x="400" y="450" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="3,-1" x="400" y="500" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="4,9" x="450" y="0" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="4,8" x="450" y="50" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="4,7" x="450" y="100" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="4,6" x="450" y="150" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="4,5" x="450" y="200" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="4,4" x="450" y="250" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="4,3" x="450" y="300" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="4,2" x="450" y="350" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="4,1" x="450" y="400" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="4,0" x="450" y="450" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="4,-1" x="450" y="500" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="5,9" x="500" y="0" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="5,8" x="500" y="50" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="5,7" x="500" y="100" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="5,6" x="500" y="150" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="5,5" x="500" y="200" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="5,4" x="500" y="250" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="5,3" x="500" y="300" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="5,2" x="500" y="350" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="5,1" x="500" y="400" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="5,0" x="500" y="450" href="img/ui/view/grid.webp"></image> <image class="case " data-coords="5,-1" x="500" y="500" href="img/ui/view/grid.webp"></image> <rect data-coords="" id="go-rect" x="50" y="50" width="50" height="50" fill="green" style="opacity: 0.3; display: none;"></rect> <image id="go-img" x="50" y="30" style="opacity: 0.8; display: none; pointer-events: none;" class="blink" href="img/ui/view/arrow.webp"></image> <rect data-coords="" id="destroy-rect" x="50" y="50" width="50" height="50" fill="red" style="opacity: 0.3; display: none;"></rect> <image id="destroy-img" x="50" y="30" style="opacity: 0.8; display: none; pointer-events: none; filter: hue-rotate(-100deg); z-index: 100;" class="blink" href="img/ui/view/arrow.webp"></image> </svg> </div> </div> <script> document.addEventListener("DOMContentLoaded", function() { var scrollableDiv = document.getElementById("view"); scrollableDiv.scrollLeft = (scrollableDiv.scrollWidth - scrollableDiv.clientWidth) / 2; }); </script> <div id="ajax-data"></div> <script src="./board_files/view.js"></script> <div style="color: red;"></div> <sup style="position: absolute; top: 0px; right: 0px; opacity: 0.5;">0 req</sup>   <div id="LeadDelta"></div></body><div id="a5bhiaiion"><template shadowrootmode="closed"><div id="a4nyl1hwfh" class="o-plpExtension" data-v-app=""><!----><div class="m-sidebarPlacer -center"><!----><!----></div><div class="[ -hiddenFullscreen ] fixed top-0 right-0 w-82 overflow-hidden z-[2147483647]"></div></div><link href="chrome-extension://lelehponoadknmgbnmgkcniabpopckme/content-scripts/esm/style.css" rel="stylesheet" charset="utf-8"></template></div></html>
